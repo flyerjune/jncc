@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!-- START SNIPPET: xworkSample -->
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+
+	<!--采用json数据格式，package的extends必须是extends="json-default" -->
+	<!--并且必须要用到struts2的json-lib，struts2-json-plugin包 -->
+	<!--采用异步提交方式，result的type="json"，并且result节点值为空 -->
+	<package name="default" namespace="test" extends="json-default">
+		<!--客户端请求采用DMI（动态调用） -->
+		<action name="input_user" class="nuaa.action.UserAction">
+			<result name="INPUT_USER">index.jsp</result>
+			<result name="userInfo" type="json"></result>
+		</action>
+
+		<action name="add_user" class="nuaa.action.UserAction"
+			method="addUser">
+			<result name="ADD_SUCCESS" type="json"></result>
+		</action>
+		
+	</package>
+</struts>
+
+<!-- END SNIPPET: xworkSample -->
+
